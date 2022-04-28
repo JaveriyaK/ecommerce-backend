@@ -1,0 +1,28 @@
+name: Deploy Server
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "src/*"
+      - ".github/workflows/DeployServer.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: echo "hi from github workflow"
+      - name: get repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: add github username
+        run: git config --global user.name "Kartik18g"
+      - name: add github email
+        run: git config --global user.email "gupta.kartik18kg@gmail.com"
+      - name: add heroku remote
+        run: git remote add heroku https://heroku:4cc93b4d-cf18-4715-9078-095cf94680bc@git.heroku.com/tranquil-castle-80828.git
+      - name: push to herku
+        run: git push heroku master --force
