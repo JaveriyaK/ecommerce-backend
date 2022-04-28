@@ -3,6 +3,10 @@ import dotenv from "dotenv"
 import { connectDB } from "./services/mongodb/connectDB"
 dotenv.config('./.env')
 
+//this is a comment
+
+
+
 import userRoutes from './routes/user'
 
 const app = express()
